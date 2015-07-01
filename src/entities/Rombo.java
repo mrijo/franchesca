@@ -5,11 +5,13 @@
  */
 package entities;
 
+import metrics.ComplexityLogger;
+
 /**
  *
  * @author miguel
  */
-public class Rombo extends FiguraSuper implements Figura{
+public class Rombo extends FiguraSuper implements Figura {
 
     public Rombo(int valor1, int valor2) {
         super(valor1, valor2);
@@ -17,16 +19,19 @@ public class Rombo extends FiguraSuper implements Figura{
 
     @Override
     public double calcularArea() {
-         this.area = valor1;
-      return area;
+        this.area = (valor1 * valor2) / 2;
+        ComplexityLogger.increaseMultiplicaciones(1);
+        ComplexityLogger.increaseDivisiones(1);
+        return area;
     }
 
     @Override
     public double calcularVolumen() {
-        this.volumen = valor1;
+        ComplexityLogger.increaseMultiplicaciones(2);
+        ComplexityLogger.increaseRadicaciones(1);
+        ComplexityLogger.increaseDivisiones(1);
+        this.volumen = (Math.sqrt(2) / 3) * Math.pow((valor1 * valor2), 3);
         return volumen;
     }
 
-  
-    
 }

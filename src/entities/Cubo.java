@@ -5,6 +5,8 @@
  */
 package entities;
 
+import metrics.ComplexityLogger;
+
 /**
  *
  * @author miguel
@@ -17,13 +19,15 @@ public class Cubo extends FiguraSuper implements Figura {
 
     @Override
     public double calcularArea() {
-        this.area = valor1;
+        this.area = Math.pow(valor1, 2);
+        ComplexityLogger.increasePotencias(1);
         return area;
     }
 
     @Override
     public double calcularVolumen() {
-        this.volumen = valor1;
+        this.volumen = Math.pow(valor1, 3);
+        ComplexityLogger.increasePotencias(1);
         return volumen;
     }
 

@@ -5,6 +5,7 @@
  */
 package ui;
 
+import metrics.ComplexityLogger;
 import models.AreaTableModel;
 import models.VolumenTableModel;
 import processors.ProcesadorFiguras;
@@ -41,9 +42,9 @@ public class CalVista extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        promVol = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        promAreas = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -89,11 +90,11 @@ public class CalVista extends javax.swing.JFrame {
 
         jLabel1.setText("Promedio volúmenes");
 
-        jLabel5.setText("25");
+        promVol.setText(" 0");
 
         jLabel6.setText("Promedio áreas");
 
-        jLabel7.setText("56");
+        promAreas.setText("0");
 
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -143,11 +144,11 @@ public class CalVista extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
+                        .addComponent(promVol)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6)
                         .addGap(37, 37, 37)
-                        .addComponent(jLabel7)
+                        .addComponent(promAreas)
                         .addGap(59, 59, 59))))
         );
         layout.setVerticalGroup(
@@ -171,9 +172,9 @@ public class CalVista extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel5)
+                    .addComponent(promVol)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                    .addComponent(promAreas))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
@@ -194,10 +195,21 @@ public class CalVista extends javax.swing.JFrame {
         this.volumenTable.setModel(new VolumenTableModel(processor.getFigurasVolumenes()));
         this.volumenTable.validate();
         this.volumenTable.updateUI();
-        System.out.println(processor.getValues().length);
-        System.out.println(String.valueOf(processor.getValues()[0]));
+        this.promVol.setText(String.valueOf(processor.getProSumVol()));
+        this.promAreas.setText(String.valueOf(processor.getProSumAreas()));
+        
+        
+        System.out.println("Sumas--------->" + ComplexityLogger.getSumas());
+        System.out.println("Restas--------->" + ComplexityLogger.getRestas());
+        System.out.println("Multiplicaciones--------->" + ComplexityLogger.getMultiplicaciones());
+        System.out.println("Divisiones--------->" + ComplexityLogger.getDivisiones());
+        System.out.println("Potencias--------->" + ComplexityLogger.getPotencias());
+        System.out.println("Radicaciones--------->" + ComplexityLogger.getRadicaciones());
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -242,12 +254,12 @@ public class CalVista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel promAreas;
+    private javax.swing.JLabel promVol;
     private javax.swing.JTextArea valuesTextArea;
     private javax.swing.JTable volumenTable;
     // End of variables declaration//GEN-END:variables

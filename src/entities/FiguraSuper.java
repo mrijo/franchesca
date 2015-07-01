@@ -26,7 +26,7 @@ public abstract class FiguraSuper {
     public FiguraSuper(int valor1, int valor2) {
         this.valor1 = valor1;
         this.valor2 = valor2;
-        this.valor3 = 1;
+        this.valor3 = 0;
     }
 
     public int getValor1() {
@@ -54,7 +54,7 @@ public abstract class FiguraSuper {
     }
 
     public double getArea() {
-        return area;
+        return Math.round(area);
     }
 
     public void setArea(double area) {
@@ -62,7 +62,7 @@ public abstract class FiguraSuper {
     }
 
     public double getVolumen() {
-        return volumen;
+        return Math.round(volumen);
     }
 
     public void setVolumen(double volumen) {

@@ -5,6 +5,8 @@
  */
 package entities;
 
+import metrics.ComplexityLogger;
+
 /**
  *
  * @author miguel
@@ -17,13 +19,18 @@ public class Piramide extends FiguraSuper implements Figura {
 
     @Override
     public double calcularArea() {
-        this.area = valor1;
+        ComplexityLogger.increaseMultiplicaciones(1);
+        ComplexityLogger.increaseSumas(1);
+        ComplexityLogger.increaseDivisiones(1);
+        this.area = (valor1 * valor2 + valor3) / 2;
         return area;
     }
 
     @Override
     public double calcularVolumen() {
-        this.volumen = valor1;
+        ComplexityLogger.increaseMultiplicaciones(1);
+        ComplexityLogger.increaseDivisiones(1);
+        this.volumen = (this.area * valor3) / 3;
         return volumen;
     }
 

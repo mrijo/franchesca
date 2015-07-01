@@ -5,6 +5,8 @@
  */
 package entities;
 
+import metrics.ComplexityLogger;
+
 /**
  *
  * @author miguel
@@ -17,13 +19,18 @@ public class Esfera extends FiguraSuper implements Figura {
 
     @Override
     public double calcularArea() {
-        this.area = valor1;
+        this.area = 4 * Math.PI * Math.pow(valor1, 2);
+        ComplexityLogger.increasePotencias(1);
+        ComplexityLogger.increaseMultiplicaciones(2);
         return area;
     }
 
     @Override
     public double calcularVolumen() {
-        this.volumen = valor1;
+        this.volumen = (4 / 3) * Math.PI * Math.pow(valor1, 3);
+        ComplexityLogger.increasePotencias(1);
+        ComplexityLogger.increaseMultiplicaciones(2);
+        ComplexityLogger.increaseDivisiones(1);
         return volumen;
     }
 

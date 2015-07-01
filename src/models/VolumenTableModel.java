@@ -19,10 +19,10 @@ import javax.swing.table.AbstractTableModel;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 public class VolumenTableModel extends AbstractTableModel {
 
-    private ArrayList<Figura> figurasVolumenes;
+    private final ArrayList<Figura> figurasVolumenes;
+    private String[] columnNames = {"Tipo Figura", "Primer Valor", "Segundo Valor", "Tercer Valor", "Area"};
 
     public VolumenTableModel(ArrayList<Figura> figurasVolumenes) {
         this.figurasVolumenes = figurasVolumenes;
@@ -43,7 +43,7 @@ public class VolumenTableModel extends AbstractTableModel {
         FiguraSuper figura = (FiguraSuper) figurasVolumenes.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return figura.getClass().toString();
+                return figura.getClass().getSimpleName();
             case 1:
                 return figura.getValor1();
             case 2:
@@ -57,4 +57,8 @@ public class VolumenTableModel extends AbstractTableModel {
         return 0;
     }
 
+    @Override
+    public String getColumnName(int pCol) {
+        return columnNames[pCol];
+    }
 }

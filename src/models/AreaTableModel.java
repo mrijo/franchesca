@@ -16,7 +16,8 @@ import javax.swing.table.AbstractTableModel;
  */
 public class AreaTableModel extends AbstractTableModel {
 
-    private ArrayList<Figura> figurasAreas;
+    private final ArrayList<Figura> figurasAreas;
+    private final String[] columnNames = {"Tipo Figura","Primer Valor","Segundo Valor","Tercer Valor", "Area"};
 
     public AreaTableModel(ArrayList<Figura> figurasAreas) {
         this.figurasAreas = figurasAreas;
@@ -37,7 +38,8 @@ public class AreaTableModel extends AbstractTableModel {
         FiguraSuper figura = (FiguraSuper) figurasAreas.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return figura.getClass().toString();
+
+                return figura.getClass().getSimpleName();
             case 1:
                 return figura.getValor1();
             case 2:
@@ -51,4 +53,8 @@ public class AreaTableModel extends AbstractTableModel {
         return 0;
     }
 
+    @Override
+    public String getColumnName(int pCol) {
+        return columnNames[pCol];
+    }
 }

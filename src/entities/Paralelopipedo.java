@@ -5,6 +5,8 @@
  */
 package entities;
 
+import metrics.ComplexityLogger;
+
 /**
  *
  * @author miguel
@@ -18,13 +20,16 @@ public class Paralelopipedo extends FiguraSuper implements Figura {
     @Override
     public double calcularArea() {
         this.area = valor1;
-        return area;
+        ComplexityLogger.increaseSumas(2);
+        ComplexityLogger.increaseMultiplicaciones(5);
+        return 2 * valor1 * valor2 + 2 * valor1 * valor3 + 2 * valor2 * valor3;
     }
 
     @Override
     public double calcularVolumen() {
         this.volumen = valor1;
-        return volumen;
+         ComplexityLogger.increaseMultiplicaciones(2);
+        return valor1 * valor2 * valor3;
     }
 
 }
